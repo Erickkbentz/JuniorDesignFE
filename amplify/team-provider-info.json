@@ -23,6 +23,16 @@
       "StackName": "amplify-juniordesignfe-dev-11111",
       "StackId": "arn:aws:cloudformation:us-east-1:367774933725:stack/amplify-juniordesignfe-dev-11111/5bfbfa70-0c75-11ec-8a19-125f4521752f",
       "AmplifyAppId": "d35q8e4hq8uhra"
+    },
+    "categories": {
+      "function": {
+        "juniordesignfe2308b33ePreSignup": {
+          "DOMAINALLOWLIST": "gatech.edu"
+        }
+      },
+      "auth": {
+        "juniordesignfe2308b33e": {}
+      }
     }
   }
 }
