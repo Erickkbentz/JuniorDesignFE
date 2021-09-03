@@ -1,0 +1,17 @@
+{
+  "providers": [
+    "awscloudformation"
+  ],
+  "projectName": "JuniorDesignFE",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react",
+    "config": {
+      "SourceDir": "",
+      "DistributionDir": "build",
+      "BuildCommand": "npx next build",
+      "StartCommand": "npx next start"
+    }
+  }
+}
