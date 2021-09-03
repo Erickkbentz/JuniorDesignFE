@@ -27,7 +27,9 @@
     "categories": {
       "function": {
         "juniordesignfe2308b33ePreSignup": {
-          "DOMAINALLOWLIST": "gatech.edu"
+          "DOMAINALLOWLIST": "gatech.edu",
+          "deploymentBucketName": "amplify-juniordesignfe-dev-11111-deployment",
+          "s3Key": "amplify-builds/juniordesignfe2308b33ePreSignup-554175736e4d43596b49-build.zip"
         }
       },
       "auth": {
