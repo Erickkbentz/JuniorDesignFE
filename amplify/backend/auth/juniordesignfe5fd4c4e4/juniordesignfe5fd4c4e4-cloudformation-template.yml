@@ -12,13 +12,13 @@ Parameters:
   
   
   
-  functionjuniordesignfe2308b33ePreSignupArn:
+  functionjuniordesignfe5fd4c4e4PreSignupArn:
     Type: String
-    Default: functionjuniordesignfe2308b33ePreSignupArn
+    Default: functionjuniordesignfe5fd4c4e4PreSignupArn
   
-  functionjuniordesignfe2308b33ePreSignupName:
+  functionjuniordesignfe5fd4c4e4PreSignupName:
     Type: String
-    Default: functionjuniordesignfe2308b33ePreSignupName
+    Default: functionjuniordesignfe5fd4c4e4PreSignupName
   
   
   
@@ -181,7 +181,7 @@ Resources:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'junior2308b33e_sns-role', !Join ['',[ 'sns', '2308b33e', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'junior5fd4c4e4_sns-role', !Join ['',[ 'sns', '5fd4c4e4', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -193,10 +193,10 @@ Resources:
               - "sts:AssumeRole"
             Condition:
               StringEquals:
-                sts:ExternalId: junior2308b33e_role_external_id
+                sts:ExternalId: junior5fd4c4e4_role_external_id
       Policies:
         -
-          PolicyName: junior2308b33e-sns-policy
+          PolicyName: junior5fd4c4e4-sns-policy
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
@@ -225,12 +225,19 @@ Resources:
           Required: true
           Mutable: true
         
+        -
+          Name: phone_number
+          Required: true
+          Mutable: true
+        
       
       
       
       AutoVerifiedAttributes:
       
         - email
+      
+        - phone_number
       
       
       
@@ -253,7 +260,7 @@ Resources:
       SmsAuthenticationMessage: !Ref smsAuthenticationMessage
       SmsConfiguration:
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: junior2308b33e_role_external_id
+        ExternalId: junior5fd4c4e4_role_external_id
     
   
   UserPoolClientWeb:
@@ -261,7 +268,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: junior2308b33e_app_clientWeb
+      ClientName: junior5fd4c4e4_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -271,7 +278,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: junior2308b33e_app_client
+      ClientName: junior5fd4c4e4_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -282,7 +289,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '2308b33e', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '5fd4c4e4', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -336,7 +343,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: junior2308b33e_userpoolclient_lambda_iam_policy
+      PolicyName: junior5fd4c4e4_userpoolclient_lambda_iam_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -353,7 +360,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: junior2308b33e_userpoolclient_lambda_log_policy
+      PolicyName: junior5fd4c4e4_userpoolclient_lambda_log_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -393,7 +400,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties:
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'juniordesignfe2308b33e_identitypool_2308b33e', !Join ['',['juniordesignfe2308b33e_identitypool_2308b33e', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'juniordesignfe5fd4c4e4_identitypool_5fd4c4e4', !Join ['',['juniordesignfe5fd4c4e4_identitypool_5fd4c4e4', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient

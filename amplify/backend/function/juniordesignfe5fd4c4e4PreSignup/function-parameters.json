@@ -3,15 +3,15 @@
   "modules": [
     "email-filter-allowlist"
   ],
-  "parentResource": "juniordesignfe2308b33e",
-  "functionName": "juniordesignfe2308b33ePreSignup",
-  "resourceName": "juniordesignfe2308b33ePreSignup",
+  "parentResource": "juniordesignfe5fd4c4e4",
+  "functionName": "juniordesignfe5fd4c4e4PreSignup",
+  "resourceName": "juniordesignfe5fd4c4e4PreSignup",
   "parentStack": "auth",
   "triggerEnvs": [],
   "triggerDir": "/Users/erickkbentz/.nvm/versions/node/v12.16.1/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PreSignup",
   "triggerTemplate": "PreSignup.json.ejs",
   "triggerEventPath": "PreSignup.event.json",
-  "roleName": "juniordesignfe2308b33ePreSignup",
+  "roleName": "juniordesignfe5fd4c4e4PreSignup",
   "skipEdit": true,
   "DOMAINALLOWLIST": "gatech.edu",
   "enableCors": false

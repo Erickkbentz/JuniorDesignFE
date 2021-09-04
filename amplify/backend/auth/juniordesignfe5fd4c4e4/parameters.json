@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "juniordesignfe2308b33e_identitypool_2308b33e",
+    "identityPoolName": "juniordesignfe5fd4c4e4_identitypool_5fd4c4e4",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "junior2308b33e",
-    "userPoolName": "juniordesignfe2308b33e_userpool_2308b33e",
+    "resourceNameTruncated": "junior5fd4c4e4",
+    "userPoolName": "juniordesignfe5fd4c4e4_userpool_5fd4c4e4",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -18,10 +18,13 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email"
+        "email",
+        "phone_number"
     ],
     "aliasAttributes": [
-        "email"
+        "email",
+        "preferred_username",
+        "phone_number"
     ],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
@@ -31,10 +34,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "junior2308b33e_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "junior5fd4c4e4_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "2308b33e",
-    "resourceName": "juniordesignfe2308b33e",
+    "sharedId": "5fd4c4e4",
+    "resourceName": "juniordesignfe5fd4c4e4",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -56,13 +59,13 @@
     "parentStack": {
         "Ref": "AWS::StackId"
     },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PreSignUp\",\n    \"lambdaFunctionName\": \"juniordesignfe2308b33ePreSignup\"\n  }\n]",
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PreSignUp\",\n    \"lambdaFunctionName\": \"juniordesignfe5fd4c4e4PreSignup\"\n  }\n]",
     "breakCircularDependency": true,
     "permissions": [],
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "juniordesignfe2308b33ePreSignup",
+            "resourceName": "juniordesignfe5fd4c4e4PreSignup",
             "triggerProvider": "Cognito",
             "attributes": [
                 "Arn",

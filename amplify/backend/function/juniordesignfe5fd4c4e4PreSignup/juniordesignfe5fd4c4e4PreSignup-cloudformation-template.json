@@ -71,12 +71,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "juniordesignfe2308b33ePreSignup",
+            "juniordesignfe5fd4c4e4PreSignup",
             {
               "Fn::Join": [
                 "",
                 [
-                  "juniordesignfe2308b33ePreSignup",
+                  "juniordesignfe5fd4c4e4PreSignup",
                   "-",
                   {
                     "Ref": "env"
@@ -129,12 +129,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "juniordesignfe2308b33ePreSignup",
+            "juniordesignfe5fd4c4e4PreSignup",
             {
               "Fn::Join": [
                 "",
                 [
-                  "juniordesignfe2308b33ePreSignup",
+                  "juniordesignfe5fd4c4e4PreSignup",
                   "-",
                   {
                     "Ref": "env"

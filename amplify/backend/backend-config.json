@@ -1,12 +1,12 @@
 {
   "auth": {
-    "juniordesignfe2308b33e": {
+    "juniordesignfe5fd4c4e4": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "juniordesignfe2308b33ePreSignup",
+          "resourceName": "juniordesignfe5fd4c4e4PreSignup",
           "triggerProvider": "Cognito",
           "attributes": [
             "Arn",
@@ -17,10 +17,13 @@
       "customAuth": false,
       "frontendAuthConfig": {
         "loginMechanisms": [
-          "EMAIL"
+          "EMAIL",
+          "PREFERRED_USERNAME",
+          "PHONE_NUMBER"
         ],
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "PHONE_NUMBER"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
@@ -34,7 +37,7 @@
     }
   },
   "function": {
-    "juniordesignfe2308b33ePreSignup": {
+    "juniordesignfe5fd4c4e4PreSignup": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
