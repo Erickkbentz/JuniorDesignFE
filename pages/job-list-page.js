@@ -11,6 +11,8 @@ export default function Job_List_Page() {
 
     return (
         <div className="container">
+
+            {/*container to have page header and button in-line; in jobs-page.css*/}
             <div className="container-head">
                 <h1 className="itemLeft">Inference Jobs</h1>
                 <span className="itemRight">
@@ -18,7 +20,10 @@ export default function Job_List_Page() {
                 </span>
             </div>
 
+            {/* containter to have border around table; in jobs-page.css*/}
             <div className="table-container">
+
+                {/* using bootstrap table stuff similar to here: https://jasonwatmore.com/post/2020/09/13/react-display-a-list-of-items*/}
                 <div className="table-responsive fixed-table-body">
                     <table className="table table-striped table-bordered">
                         <thead className="table-dark">
