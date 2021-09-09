@@ -1,0 +1,80 @@
+table {
+table-layout: fixed;
+width: 100%;
+}
+
+thead, tbody, tr, td, th { display: block; }
+
+tr:after {
+content: ' ';
+display: block;
+visibility: hidden;
+clear: both;
+}
+
+thead th {
+height: 40px;
+width: 100%;
+/*text-align: left;*/
+}
+
+tbody {
+height: 400px;
+overflow-y: auto;
+}
+
+thead {
+/* fallback */
+}
+
+tbody td, thead th {
+width: 33.333%;
+float: left;
+}
+
+.table-container {
+    height: 400px;
+    border: black;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.jobListButton {
+color:white;
+width: 100px;
+background-color: #7F09F4;
+font-size: 12px;
+margin-right: 10px;
+margin-left: 10px;
+}
+
+.createNewButton {
+color:white;
+width: 120px;
+height: 40px;
+background-color: #7F09F4;
+font-size: 18px;
+margin-right: 10px;
+margin-left: 10px;
+}
+
+
+.itemRight {
+text-align: right;
+float: right;
+margin-right: 25px;
+}
+
+.itemLeft {
+text-align: left;
+float: left;
+margin-left: 25px;
+}
+
+.container-head{
+    display: inline-block;
+    width: 100%;
+    margin-top: 35px;
+    margin-bottom: 30px
+
+}
