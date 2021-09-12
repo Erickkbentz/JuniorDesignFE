@@ -5,12 +5,22 @@ import FileInput from './FileInput'
 import URLInput from './URLInput'
 import TextInput from './TextInput'
 
+const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            color: color,
+            backgroundColor: color,
+            height: 5
+        }}
+    />
+);
 
 function DataUpload() {
   return (
     <div className={styles.dataUpload}>
       <div className="container">
         <div className="row align-items-center my-5">
+            <ColoredLine color="black" />
             <div className="col-lg-10">
                 <h1 className="font-weight-light">Data Upload: Create a new Analysis Job</h1>
                 {/* <h2 class="font-weight-light">Create a new Analysis Job</h2> */}
