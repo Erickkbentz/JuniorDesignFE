@@ -47,7 +47,7 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .title,
@@ -113,9 +113,21 @@
   margin-left: 0.5rem;
 }
 
+.uploadTitle {
+  font-size: 1.25rem;
+
+}
+
+.dataUpload {
+  margin: 0;
+  padding: 0;
+
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 }
+
