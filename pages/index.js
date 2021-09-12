@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import FileInput from './components/FileInput'
 import { AmplifySignOut } from "@aws-amplify/ui-react"
+import Link from 'next/link'
 
 import MainNavbar from './components/MainNavbar'
 import DataUpload from './components/DataUpload'
@@ -22,7 +23,6 @@ export default function Home() {
         <h1 className={styles.title}>
           GTRI Analysis of Extremist Behavior Dashboard
         </h1>
-
         <p className={styles.description}>
           Get started by inputing a{' '}
           <code className={styles.code}>file</code>
@@ -33,6 +33,7 @@ export default function Home() {
         <DataUpload/>
         </div>
       </main>
+      <AmplifySignOut />
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

@@ -1,4 +1,6 @@
 import "../styles/globals.css"
+import "../styles/jobs-page.css"
+import 'bootstrap/dist/css/bootstrap.css'
 
 import { Amplify } from "aws-amplify"
 import { AmplifyAuthenticator } from "@aws-amplify/ui-react"
