@@ -24,16 +24,11 @@ export default function Home() {
           GTRI Analysis of Extremist Behavior Dashboard
         </h1>
         <p className={styles.description}>
-          Get started by inputing a{' '}
+          Get started by inputting a{' '}
           <code className={styles.code}>file</code>
           {/* . */}
         </p>
-        {/* <div className={styles.grid}> */}
-        <div>
-        <DataUpload/>
-        </div>
       </main>
-      <AmplifySignOut />
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"

@@ -1,4 +1,8 @@
 import React, { useState} from 'react'
+import MainNavbar from './components/MainNavbar'
+import Link from 'next/link'
+import styles from '../styles/Home.module.css'
+
 
 export default function Job_List_Page() {
     const [jobs, setJobs] = useState([
@@ -10,13 +14,15 @@ export default function Job_List_Page() {
     ])
 
     return (
-        <div className="container">
-
+        <div className={styles.container}>
+         <MainNavbar/> 
             {/*container to have page header and button in-line; in jobs-page.css*/}
             <div className="container-head">
                 <h1 className="itemLeft">Inference Jobs</h1>
                 <span className="itemRight">
-                    <button className="createNewButton">Create New</button> 
+                    <Link href="/job-create-page">
+                        <button className="createNewButton">Create New</button> 
+                    </Link>
                 </span>
             </div>
 
