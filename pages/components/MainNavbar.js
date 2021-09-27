@@ -1,4 +1,3 @@
-import { AmplifySignOut } from "@aws-amplify/ui-react";
 import React from "react";
 import Link from 'next/link'
 import {
@@ -36,7 +35,6 @@ class MainNavbar extends React.Component {
                 </NavDropdown>
               </Nav>
               <Nav>
-              <AmplifySignOut/>
               </Nav>
             </Navbar.Collapse>
             </Container>

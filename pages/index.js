@@ -1,12 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import FileInput from './components/FileInput'
-import { AmplifySignOut } from "@aws-amplify/ui-react"
-import Link from 'next/link'
 
 import MainNavbar from './components/MainNavbar'
-import DataUpload from './components/DataUpload'
 
 
 export default function Home() {
