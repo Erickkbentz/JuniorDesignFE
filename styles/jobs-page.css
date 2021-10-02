@@ -33,7 +33,7 @@ float: left;
 }
 
 .table-container {
-    height: 400px;
+    height: 80%;
     border: black;
     border-style: solid;
     border-width: 2px;
@@ -71,10 +71,13 @@ float: left;
 margin-left: 25px;
 }
 
-.container-head{
+.container-head {
     display: inline-block;
     width: 100%;
-    margin-top: 35px;
-    margin-bottom: 30px
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
 
+.pageBody {
+    padding: 20px;
 }

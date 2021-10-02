@@ -14,18 +14,19 @@ class MainNavbar extends React.Component {
     }
     render() {
       return (
-        <Navbar sticky="top" variant="dark" expand="lg" style={{width:1500, backgroundColor:"mediumpurple ", margin:0}}>
-          <Container>
-            <Navbar.Brand href="#home">GTRI</Navbar.Brand>
+        <Navbar sticky="top" variant="dark" expand="lg" style={{width:1500, backgroundColor:"mediumpurple ", margin:0, position:"absolute", top:0, marginBottom:20, paddingLeft:20}}>
+            <Link href="/" passHref>
+              <Navbar.Brand href="#home">GTRI</Navbar.Brand>
+            </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link>Home</Nav.Link>
-                <Nav.Link>
-                  <Link href="/job-list-page">
-                    <a>Jobs</a>
-                  </Link>
-                </Nav.Link>
+                <Link href="/" passHref>
+                  <Nav.Link>Home</Nav.Link>
+                </Link>
+                <Link href="/job-list-page" passHref>
+                  <Nav.Link>Jobs</Nav.Link>
+                </Link>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -37,7 +38,6 @@ class MainNavbar extends React.Component {
               <Nav>
               </Nav>
             </Navbar.Collapse>
-            </Container>
         </Navbar>
       );
     }
