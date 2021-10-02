@@ -1,16 +1,8 @@
 import React, { useState} from 'react'
-import MainNavbar from './components/MainNavbar'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import { dbClient } from '../util/DBClient.js'
 
-export default function Job_List_Page() {
-    const [jobs, setJobs] = useState([
-        {jobId: 1, name: "TestJob1", status: "Complete"},
-        {jobId: 2, name: "TestJob2", status: "Failed"},
-        {jobId: 3, name: "TestJob3", status: "Complete"},
-        {jobId: 4, name: "TestJob4", status: "Complete"},
-        {jobId: 5, name: "TestJob5", status: "In Progress"}
-    ])
+export default function Job_List_Page({jobs}) {
 
     return (
         <div>
@@ -40,8 +32,8 @@ export default function Job_List_Page() {
                             </thead>
                             <tbody>
                                 {jobs && jobs.map(job =>
-                                    <tr key={job.jobId}>
-                                        <td>{job.name}</td>
+                                    <tr key={job.id}>
+                                        <td>{job.jobName}</td>
                                         <td>{job.status}</td>
                                         <td className="text-center">
                                             <button className="jobListButton" type="button">View</button>
@@ -58,3 +50,15 @@ export default function Job_List_Page() {
     )
 }
 
+
+export const getServerSideProps = async ({ req }) => {
+    const userId = 1 //use authentication to get dynamice userID
+    const prisma = dbClient.prisma
+
+    const jobs = await prisma.job.findMany({
+        where: {
+            author: {id: userId}
+        }
+    })
+    return { props: { jobs } }
+  }
