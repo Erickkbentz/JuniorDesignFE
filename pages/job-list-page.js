@@ -1,6 +1,6 @@
 import React, { useState} from 'react'
 import Link from 'next/link'
-import { dbClient } from '../util/DBClient.js'
+import DBClient from '../util/DBClient.js'
 
 export default function Job_List_Page({jobs}) {
 
@@ -53,7 +53,7 @@ export default function Job_List_Page({jobs}) {
 
 export const getServerSideProps = async ({ req }) => {
     const userId = 1 //use authentication to get dynamice userID
-    const prisma = dbClient.prisma
+    const prisma = DBClient.getPrismaInstance()
 
     const jobs = await prisma.job.findMany({
         where: {

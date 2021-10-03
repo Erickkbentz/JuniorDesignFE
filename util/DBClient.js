@@ -1,13 +1,18 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from ".prisma/client"
 
-class DBClient {
-  prisma
+var DBClient = (function(){
 
-  constructor() {
-    this.prisma = new PrismaClient()
-    console.log("Prisma Client created")
-  }
+  var instance
+  return {
+      getPrismaInstance: function(){
+          if (instance == null) {
+              instance = new PrismaClient()
+              // Hide the constructor so the returned object can't be new'd...
+              instance.constructor = null
+          }
+          return instance;
+      }
+ }
+})()
 
-}
-
-export let dbClient = new DBClient()
+export default DBClient
