@@ -20,7 +20,7 @@ model User {
 model Job {
   id              Int         @id @default(autoincrement())
   jobName         String      @unique
-  createTime      DateTime    @default(now())
+  createTime      String?      
   status          String     
   inputLocation   String
   outputLocation  String
