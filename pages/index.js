@@ -28,7 +28,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          GTRI Analysis of Extremist Behavior Dashboard
+          GTRI Analysis of Persuasive Techniques Dashboard
         </h1>
         <p className={styles.description}>
           Get started by inputting a{' '}
