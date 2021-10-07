@@ -13,14 +13,15 @@ generator client {
 model User {
   id              Int         @id @default(autoincrement())
   name            String
-  email           String      @unique
   jobs            Job[]
+  email           String      @unique
+
 } 
 
 model Job {
   id              Int         @id @default(autoincrement())
   jobName         String      @unique
-  createTime      String?      
+  createTime      String?     
   status          String     
   inputLocation   String
   outputLocation  String
