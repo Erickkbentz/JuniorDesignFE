@@ -3,14 +3,23 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 import MainNavbar from './components/MainNavbar'
+import { useUser } from '@auth0/nextjs-auth0';
 
 
 export default function Home() {
+  const user = useUser();
+  
+  if (!user.user ) {
+    return (
+      <div className={styles.container}>
+        <a href="/api/auth/login">Login</a>
+      </div>
+    );
+  }
+  console.log (user);
   return (
-    
     <div className={styles.container}>
       <MainNavbar/>
-      <a href="/api/auth/login">Login</a>
       <a href="/api/auth/logout">Logout</a>
       <Head>
         <title>Analysis Dashboard</title>
