@@ -17,7 +17,6 @@ function MyApp({ Component, pageProps }) {
     <UserProvider>
       <MainNavbar/>
       <Component {...pageProps} />
-
     </UserProvider>
   )
 }
