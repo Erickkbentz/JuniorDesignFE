@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactDOM } from "react";
+import DBClient from '../../util/DBClient.js'
 
 class URLInput extends React.Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class URLInput extends React.Component {
       event.preventDefault();
       alert(
         `URL - ${this.URLInput}`    );
+
     }
   
     render() {
@@ -29,6 +31,24 @@ class URLInput extends React.Component {
 
       );
     }
+
+    async createJob() {
+      const prisma = DBClient.getPrismaInstance()
+      const job = await prisma.job.create({
+            data: {
+                id: '20',
+                jobName : 'idk',
+                createTime : 'sdf',
+                status : 'sfsd',
+                inputLocation : 'sdf',
+                outputLocation : 'sdf',
+                author: '1',
+                authorID: '1',
+            }
+        })
+    }
+
   }
+
   
 export default URLInput;  

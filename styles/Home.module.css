@@ -81,7 +81,7 @@
 .card {
   margin: 1rem;
   padding: 1.5rem;
-  text-align: left;
+  text-align: center;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
@@ -93,13 +93,21 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  /* color: #0070f3; */
+  color: #000000;
+  border-color:#000000;
+  /* border-color: #0070f3; */
 }
 
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
+}
+
+.card field {
+  margin: 0 0 1rem 0;
+  margin-left: 10%;
+  padding-left: 10%;
 }
 
 .card p {
@@ -115,12 +123,11 @@
 
 .uploadTitle {
   font-size: 1.25rem;
-
 }
 
 .dataUpload {
-  margin: 0;
-  padding: 0;
+  margin: 20;
+  padding: 20;
 
 }
 
@@ -131,3 +138,12 @@
   }
 }
 
+.dataUploadForm {
+  object-position: 50% 50%;
+  text-decoration-color: #0070f3;
+}
+
+.submitField {
+  margin: 20;
+  padding: 20;
+}
