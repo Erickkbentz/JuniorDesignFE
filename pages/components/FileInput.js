@@ -1,7 +1,6 @@
 import React from "react";
 import { ReactDOM } from "react";
 
-
 class FileInput extends React.Component {
     constructor(props) {
       super(props);
