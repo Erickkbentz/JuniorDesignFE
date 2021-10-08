@@ -1,9 +1,6 @@
 import React from "react";
 import { ReactDOM } from "react";
 import DBClient from '../../util/DBClient.js'
-import { GetServerSideProps } from '../addJob.js';
-
-// const prisma = DBClient.getPrismaInstance()
 
 class URLInput extends React.Component {
     constructor(props) {
@@ -12,13 +9,8 @@ class URLInput extends React.Component {
       this.URLInput = React.createRef();  }
     handleSubmit(event) {
       event.preventDefault();
-      // main();
-      this.createJob();
-
-      // event.preventDefault();
-      // getServerSideProps();
-      // alert(
-      //   `URL - ${this.URLInput}`    );
+      alert(
+        `URL - ${this.URLInput}`    );
 
     }
   
@@ -58,36 +50,5 @@ class URLInput extends React.Component {
 
   }
 
-
-
-
-// export const getServerSideProps = async ({ req }) => {
-//   const prisma = DBClient.getPrismaInstance()
-
-//   const job = await prisma.job.create({
-//     data: {
-//       id: '20',
-//       jobName : 'idk',
-//       createTime : 'sdf',
-//       status : 'sfsd',
-//       inputLocation : 'sdf',
-//       outputLocation : 'sdf',
-//       author: '1',
-//       authorID: '1',
-//     },
-//   })
-
-  // const job = prisma.createJob({
-  //   id: '20',
-  //   jobName : 'idk',
-  //   createTime : 'sdf',
-  //   status : 'sfsd',
-  //   inputLocation : 'sdf',
-  //   outputLocation : 'sdf',
-  //   author: '1',
-  //   authorID: '1',
-  // })
-  // return { props: {job} }
-// }
   
 export default URLInput;  

@@ -27,5 +27,6 @@ model Job {
   outputLocation  String
   author          User       @relation(fields: [authorId], references: [id])
   authorId        Int
+
 }
 

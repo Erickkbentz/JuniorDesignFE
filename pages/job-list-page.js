@@ -56,9 +56,9 @@ export const getServerSideProps = async ({ req }) => {
     const prisma = DBClient.getPrismaInstance()
 
     const jobs = await prisma.job.findMany({
-        where: {
-            author: {id: userId}
-        }
+        // where: {
+        //     author: {id: userId}
+        // }
     })
     return { props: { jobs } }
   }

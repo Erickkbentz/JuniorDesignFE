@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { Field, Formik, Form } from 'formik';
 
 export default function Home() {
   return (
@@ -17,10 +18,11 @@ export default function Home() {
         </h1>
         <p className={styles.description}>
           Get started by inputting a{' '}
-          <code className={styles.code}>file</code>
+          <code className={styles.code}>file or URL</code>
           {/* . */}
         </p>
       </main>
+
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -34,7 +36,6 @@ export default function Home() {
         </a>
       </footer>
     </div>
+
   )
 }
-
-export { default as DataUpload } from "./components/DataUpload";
