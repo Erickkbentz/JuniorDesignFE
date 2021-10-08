@@ -40,7 +40,7 @@ const DataUpload = ({jobs}) => (
         authorID: '',
       }}
       onSubmit={(values) => {
-        fetch('https://localhost:3000/api/jobs', {
+        fetch('https://localhost:3000/api/job/create', {
           method: 'POST',
           body: console.log(JSON.stringify({ ...values, id: Number(values.id), authorID: Number(values.authorID) })),
         });
