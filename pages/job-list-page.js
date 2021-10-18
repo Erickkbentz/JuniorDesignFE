@@ -2,6 +2,7 @@ import React, { useState} from 'react'
 import Link from 'next/link'
 import DBClient from '../util/DBClient.js'
 
+/** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_List_Page({jobs}) {
 
     return (
@@ -11,7 +12,7 @@ export default function Job_List_Page({jobs}) {
                 <div className="container-head">
                     <h1 className="itemLeft">Inference Jobs</h1>
                     <span className="itemRight">
-                        <Link href="/job-create-page" styles={{ textDecoration: 'none' }}>
+                        <Link href="/job-create-page" styles={{ textDecoration: 'none' }} passHref>
                             <button className="createNewButton">Create New</button> 
                         </Link>
                     </span>
