@@ -1,7 +1,6 @@
 import React, { useState} from 'react'
-import MainNavbar from './components/MainNavbar'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import DBClient from '../util/DBClient.js'
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_List_Page({jobs}) {
@@ -34,8 +33,8 @@ export default function Job_List_Page({jobs}) {
                             </thead>
                             <tbody>
                                 {jobs && jobs.map(job =>
-                                    <tr key={job.jobId}>
-                                        <td>{job.name}</td>
+                                    <tr key={job.id}>
+                                        <td>{job.jobName}</td>
                                         <td>{job.status}</td>
                                         <td className="text-center">
                                             <button className="jobListButton" type="button">View</button>
@@ -52,3 +51,16 @@ export default function Job_List_Page({jobs}) {
     )
 }
 
+
+export const getServerSideProps = async ({ req }) => {
+    const userId = 1 //use authentication to get dynamic userID
+
+    const prisma = DBClient.getPrismaInstance()
+
+    const jobs = await prisma.job.findMany({
+        where: {
+            author: {id: userId}
+        }
+    })
+    return { props: { jobs } }
+  }
