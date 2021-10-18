@@ -2,10 +2,31 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 generator client {
   provider = "prisma-client-js"
 }
+
+model User {
+  id              Int         @id @default(autoincrement())
+  name            String
+  jobs            Job[]
+  email           String      @unique
+
+} 
+
+model Job {
+  id              Int         @id @default(autoincrement())
+  jobName         String      @unique
+  createTime      String?     
+  status          String     
+  inputLocation   String
+  outputLocation  String
+  author          User       @relation(fields: [authorId], references: [id])
+  authorId        Int
+
+}
+
