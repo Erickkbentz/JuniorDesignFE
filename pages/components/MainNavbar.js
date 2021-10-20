@@ -14,7 +14,7 @@ class MainNavbar extends React.Component {
     }
     render() {
       return (
-        <Navbar sticky="top" variant="dark" expand="lg" style={{width:1500, backgroundColor:"mediumpurple ", margin:0, position:"absolute", top:0, marginBottom:20, paddingLeft:20}}>
+        <Navbar sticky="top" variant="dark" expand="lg" className="navbar-global">
             <Link href="/" passHref>
               <Navbar.Brand href="#home">GTRI</Navbar.Brand>
             </Link>

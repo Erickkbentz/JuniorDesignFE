@@ -9,11 +9,11 @@ export default function Job_List_Page({jobs}) {
         <div>
          <div className="pageBody">
                 {/*container to have page header and button in-line; in jobs-page.css*/}
-                <div className="container-head">
-                    <h1 className="itemLeft">Inference Jobs</h1>
-                    <span className="itemRight">
+                <div className="jobs-container-head-grid">
+                    <h1 className="jobs-grid-item-left">Inference Jobs</h1>
+                    <span className="jobs-grid-item-right">
                         <Link href="/job-create-page" styles={{ textDecoration: 'none' }} passHref>
-                            <button className="createNewButton">Create New</button> 
+                            <button className="createButton">Create New</button> 
                         </Link>
                     </span>
                 </div>
@@ -37,8 +37,8 @@ export default function Job_List_Page({jobs}) {
                                         <td>{job.jobName}</td>
                                         <td>{job.status}</td>
                                         <td className="text-center">
-                                            <button className="jobListButton" type="button">View</button>
-                                            <button className="jobListButton" type="button">Download</button>
+                                            <button className="tableButton" type="button">View</button>
+                                            <button className="tableButton" type="button">Download</button>
                                         </td>
                                     </tr>
                                 )}

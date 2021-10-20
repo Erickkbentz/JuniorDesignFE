@@ -41,26 +41,30 @@ class CreateJobForm extends React.Component {
     render(){
         return ( 
             <form onSubmit={this.createJob}>
-                <label htmlFor="jobName" className = {styles.card}>
-                    Job Name
-                    <input id="jobName" name="jobName" type="text"/>
-                </label>
+                <div>
+                    <label htmlFor="jobName" className = {styles.card}>
+                        Job Name
+                        <input id="jobName" name="jobName" type="text"/>
+                    </label>
 
-                <label htmlFor="status" className = {styles.card}>
-                    Status
-                    <input id="status" name="status" type="text"/>
-                </label>
+                    <label htmlFor="status" className = {styles.card}>
+                        Status
+                        <input id="status" name="status" type="text"/>
+                    </label>
 
-                <label htmlFor="inputLocation" className = {styles.card}>
-                    File Path or URL
-                    <input id="inputLocation" name="inputLocation" type="text"/>
-                </label>
+                    <label htmlFor="inputLocation" className = {styles.card}>
+                        File Path or URL
+                        <input id="inputLocation" name="inputLocation" type="text"/>
+                    </label>
 
-                <label htmlFor="outputLocation" className = {styles.card}>
-                    Output Location
-                    <input id="outputLocation" name="outputLocation" type="text"/>
-                </label>
-                <button type="submit" >Submit</button>
+                    <label htmlFor="outputLocation" className = {styles.card}>
+                        Output Location
+                        <input id="outputLocation" name="outputLocation" type="text"/>
+                    </label>
+                 </div>
+                <div>
+                    <button type="submit" >Submit</button>
+                </div>
             </form>
         
         )
