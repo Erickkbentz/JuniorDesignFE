@@ -1,10 +1,12 @@
 import React, { useState} from 'react'
 import Link from 'next/link'
 import DBClient from '../util/DBClient.js'
+import { useRouter } from 'next/router'
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_List_Page({jobs}) {
-
+    const router = useRouter()
+    // console.log(jobs);
     return (
         <div>
          <div className="pageBody">
@@ -37,7 +39,7 @@ export default function Job_List_Page({jobs}) {
                                         <td>{job.jobName}</td>
                                         <td>{job.status}</td>
                                         <td className="text-center">
-                                            <button className="tableButton" type="button">View</button>
+                                            <button className="tableButton" type="button" onClick={() => router.push('/job-view-page?id=' + job.id)}>View</button>
                                             <button className="tableButton" type="button">Download</button>
                                         </td>
                                     </tr>
