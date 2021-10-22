@@ -52,7 +52,7 @@ const DataUpload = ({jobs}) => (
           <Field name="jobName" type="text"></Field>
         </label>
         <label className = {styles.card}>
-          File Type
+          Input Type (URL or CSV File)
           <Field name="fileType" type="text"></Field>
         </label>
         {/* <label className = {styles.card}>
