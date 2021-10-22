@@ -14,3 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.navbar-global {
+  width: 100%;
+  background-color: mediumpurple;
+  margin:0;
+  position: absolute;
+  top:0;
+  padding-left: 20px;
+}

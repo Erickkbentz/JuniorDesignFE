@@ -2,17 +2,18 @@ import React, { useState} from 'react'
 import Link from 'next/link'
 import DBClient from '../util/DBClient.js'
 
+/** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_List_Page({jobs}) {
 
     return (
         <div>
          <div className="pageBody">
                 {/*container to have page header and button in-line; in jobs-page.css*/}
-                <div className="container-head">
-                    <h1 className="itemLeft">Inference Jobs</h1>
-                    <span className="itemRight">
-                        <Link href="/job-create-page" styles={{ textDecoration: 'none' }}>
-                            <button className="createNewButton">Create New</button> 
+                <div className="jobs-container-head-grid">
+                    <h1 className="jobs-grid-item-left">Inference Jobs</h1>
+                    <span className="jobs-grid-item-right">
+                        <Link href="/job-create-page" styles={{ textDecoration: 'none' }} passHref>
+                            <button className="createButton">Create New</button> 
                         </Link>
                     </span>
                 </div>
@@ -36,8 +37,8 @@ export default function Job_List_Page({jobs}) {
                                         <td>{job.jobName}</td>
                                         <td>{job.status}</td>
                                         <td className="text-center">
-                                            <button className="jobListButton" type="button">View</button>
-                                            <button className="jobListButton" type="button">Download</button>
+                                            <button className="tableButton" type="button">View</button>
+                                            <button className="tableButton" type="button">Download</button>
                                         </td>
                                     </tr>
                                 )}
@@ -52,13 +53,14 @@ export default function Job_List_Page({jobs}) {
 
 
 export const getServerSideProps = async ({ req }) => {
-    const userId = 1 //use authentication to get dynamice userID
+    const userId = 1 //use authentication to get dynamic userID
+
     const prisma = DBClient.getPrismaInstance()
 
     const jobs = await prisma.job.findMany({
-        // where: {
-        //     author: {id: userId}
-        // }
+        where: {
+            author: {id: userId}
+        }
     })
     return { props: { jobs } }
   }

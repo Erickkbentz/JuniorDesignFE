@@ -9,7 +9,7 @@ CREATE TABLE "User" (
 CREATE TABLE "Job" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "jobName" TEXT NOT NULL,
-    "createTime" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createTime" TEXT,
     "status" TEXT NOT NULL,
     "inputLocation" TEXT NOT NULL,
     "outputLocation" TEXT NOT NULL,

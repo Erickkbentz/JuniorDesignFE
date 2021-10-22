@@ -11,18 +11,19 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.5.0",
     "@emotion/css": "^11.1.3",
-    "@prisma/client": "^3.2.1",
+    "@prisma/client": "^3.3.0",
     "bootstrap": "^5.1.0",
     "formik": "^2.2.9",
     "next": "11.1.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
     "react-dom": "^17.0.2",
-    "react-router-bootstrap": "^0.25.0"
+    "react-router-bootstrap": "^0.25.0",
+    "serialize-error": "^8.1.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
-    "prisma": "^3.2.1"
+    "prisma": "^3.3.0"
   }
 }

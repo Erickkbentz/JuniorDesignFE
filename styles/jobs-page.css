@@ -39,7 +39,7 @@ float: left;
     border-width: 2px;
 }
 
-.jobListButton {
+.tableButton {
 color:white;
 width: 100px;
 background-color: #7F09F4;
@@ -48,36 +48,49 @@ margin-right: 10px;
 margin-left: 10px;
 }
 
-.createNewButton {
+.createButton {
 color:white;
 width: 120px;
 height: 40px;
 background-color: #7F09F4;
 font-size: 18px;
-margin-right: 10px;
-margin-left: 10px;
+}
+
+.backButton {
+color:white;
+width: 100px;
+height: 33px;
+background-color: #7F09F4;
+font-size: 16px;
 }
 
 
-.itemRight {
-text-align: right;
-float: right;
-margin-right: 25px;
+.jobs-container-head-grid {
+    display: grid;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-bottom: 2px solid gray;
 }
 
-.itemLeft {
-text-align: left;
-float: left;
-margin-left: 25px;
+.jobs-grid-item-left {
+    justify-self: start;
+    grid-column: 1 / 2;
 }
 
-.container-head {
-    display: inline-block;
-    width: 100%;
-    margin-top: 50px;
-    margin-bottom: 30px;
+.jobs-grid-item-center {
+    justify-self: center;
+    grid-column: 2 / 3;
+}
+
+.jobs-grid-item-right {
+    justify-self: end;
+    grid-column: 3 / 4;
 }
 
 .pageBody {
     padding: 20px;
 }
+
