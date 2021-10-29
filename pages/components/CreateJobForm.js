@@ -3,7 +3,14 @@ import styles from '../../styles/Home.module.css'
 class CreateJobForm extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            selectedOption: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
       
     async createJob(event) {
         event.preventDefault()
@@ -38,23 +45,66 @@ class CreateJobForm extends React.Component {
         }
     }
 
-    render(){
+    handleChange(event) {
+        this.setState({
+            selectedOption: event.target.value
+        });
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        alert(`you chose the ${this.state.selectedOption} .`);
+    }
+
+    render() {
         return ( 
             <form onSubmit={this.createJob}>
                 <div>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="radio">
+                            <label htmlFor="jobType" className = {styles.card}>
+                                Job Type
+                                <div>
+                                    <label>
+                                        <input
+                                        type="radio"
+                                        value="csvFile"
+                                        checked={this.state.selectedOption === 'csvFile'}
+                                        onChange={this.handleChange}/>
+                                        CSV File
+                                    </label>
+                                </div>
+                                <div> 
+                                    <label>
+                                        <input
+                                        type = "radio"
+                                        id="urlInput"
+                                        value="urlInput"
+                                        checked={this.state.selectedOption === 'urlInput'}
+                                        onChange={this.handleChange}/>
+                                        Reddit URL
+                                    </label>
+                                </div>
+                                
+                            </label>
+
+                        </div>
+                    </form>
+                    
+                    
                     <label htmlFor="jobName" className = {styles.card}>
                         Job Name
-                        <input id="jobName" name="jobName" type="text"/>
+                            <input id="jobName" name="jobName" type="text"/>
                     </label>
 
                     <label htmlFor="status" className = {styles.card}>
                         Status
                         <input id="status" name="status" type="text"/>
                     </label>
-
                     <label htmlFor="inputLocation" className = {styles.card}>
-                        File Path or URL
+                        File Path or URL:
                         <input id="inputLocation" name="inputLocation" type="text"/>
+                        {/* <input type="file" ref={this.fileInput} className = {styles.fileInput}/> */}
                     </label>
 
                     <label htmlFor="outputLocation" className = {styles.card}>

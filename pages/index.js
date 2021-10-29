@@ -8,7 +8,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 export default function Home() {
   const user = useUser();
   
-  if (!user.user ) {
+  if (!user.user) {
     return (
       <div className={styles.container}>
         <Link href="/api/auth/login" passHref>Login</Link>
