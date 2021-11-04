@@ -11,7 +11,7 @@ class CreateJobForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-      
+
     async createJob(event) {
         event.preventDefault()
     
@@ -53,7 +53,7 @@ class CreateJobForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.selectedOption);
+        // console.log(this.state.selectedOption);
         event.preventDefault();
         alert(`you chose the ${this.state.selectedOption} .`);
     }
@@ -105,8 +105,8 @@ class CreateJobForm extends React.Component {
                     </label>
                     <label htmlFor="inputLocation" className = {styles.card}>
                         File Path or URL:
-                        <input id="inputLocation" name="inputLocation" type="text"/>
-                        {/* <input type="file" ref={this.fileInput} className = {styles.fileInput}/> */}
+                        {/* <input id="inputLocation" name="inputLocation" type="text"/> */}
+                        <input type="file" ref={this.fileInput} className = {styles.fileInput}/>
                     </label>
 
                     <label htmlFor="outputLocation" className = {styles.card}>
