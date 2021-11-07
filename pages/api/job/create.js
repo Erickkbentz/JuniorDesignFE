@@ -3,12 +3,27 @@ import PrismaFactory from '../../../util/PrismaFactory'
 
 const prisma = PrismaFactory.getPrismaInstance()
 
+const mlAnalyzeAPI = "http://127.0.0.1:9090/analyze_job"
+
 export default async function createJob(req, res) {
   if (req.method === 'POST') {
     var body = JSON.parse(req.body)  
     console.log("Trying to add Job to Prisma")
 
     try {
+
+      console.log("Calling api: " + mlAnalyzeAPI)
+      const mlResponse = await fetch(mlAnalyzeAPI, {
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+          'jobName': body.jobName
+        })
+      })
+
+      var mlRes = await mlResponse.json()
+      console.log(mlRes)
+
       const job = await prisma.job.create({ 
         data: {
           jobName: body.jobName,
