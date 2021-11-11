@@ -1,17 +1,11 @@
 import React from "react";
 import { ReactDOM } from "react";
+import CreateJobForm from './CreateJobForm'
+
+// change based on this.state.selectedOption from CreateJobForm.js
 
 class URLInput extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.URLInput = React.createRef();  }
-    handleSubmit(event) {
-      event.preventDefault();
-      alert(
-        `URL - ${this.URLInput}`    );
-    }
-  
+
     render() {
       return (
         <div className="container">

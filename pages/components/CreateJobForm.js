@@ -1,5 +1,12 @@
 import React from "react"
 import styles from '../../styles/Home.module.css'
+import URLInput from './URLInput'
+import fileInput from './FileInput'
+import Input from "./Input"
+
+// GLOBAL VAR
+var darkMode = false;
+
 class CreateJobForm extends React.Component {
     constructor(props) {
         super(props)
@@ -55,6 +62,13 @@ class CreateJobForm extends React.Component {
     handleSubmit(event) {
         // console.log(this.state.selectedOption);
         event.preventDefault();
+        // switch dark mode
+        if (darkMode) {
+            darkMode = false;
+        } else {
+            darkMode = true;
+        }
+        console.log(darkMode);
         alert(`you chose the ${this.state.selectedOption} .`);
     }
 
@@ -103,10 +117,26 @@ class CreateJobForm extends React.Component {
                         Status
                         <input id="status" name="status" type="text"/>
                     </label>
+                    {/* add a line to seperate logic for file input type */}
+                    <hr  style={{
+                        color: '#000000',
+                        backgroundColor: '#000000',
+                        height: .5,
+                        borderColor : '#000000'
+                    }}/>
                     <label htmlFor="inputLocation" className = {styles.card}>
-                        File Path or URL:
-                        {/* <input id="inputLocation" name="inputLocation" type="text"/> */}
+                        File Path:
+                        {/* <FileInput /> */}
+                        {/* <Input /> */}
                         <input type="file" ref={this.fileInput} className = {styles.fileInput}/>
+
+                        {/* <input id="inputLocation" name="inputLocation" type="text"/> */}
+                        <div>
+                            OR
+                        </div>
+                        URL:
+                        <input type="url" ref={this.URLInput} />
+                        {/* <input type="file" ref={this.fileInput} className = {styles.fileInput}/> */}
                     </label>
 
                     <label htmlFor="outputLocation" className = {styles.card}>
