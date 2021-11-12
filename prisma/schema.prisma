@@ -20,10 +20,12 @@ model User {
 
 model Job {
   id              Int         @id @default(autoincrement())
+  inputType       String
   jobName         String      @unique
   createTime      String?     
   status          String     
-  inputLocation   String
+  fileLocation    String?
+  url             String?
   outputLocation  String
   author          User       @relation(fields: [authorId], references: [id])
   authorId        Int

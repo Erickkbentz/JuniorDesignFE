@@ -1,28 +1,43 @@
-import { console } from 'globalthis/implementation'
+import { alert, console } from 'globalthis/implementation'
 import {serializeError} from 'serialize-error'
 import PrismaFactory from '../../../util/PrismaFactory'
 
 const prisma = PrismaFactory.getPrismaInstance()
 
 export default async function createJob(req, res) {
+
   if (req.method === 'POST') {
-    var body = JSON.parse(req.body)  
+    var body = JSON.parse(req.body)
     console.log("Trying to add Job to Prisma")
-    // var urlInput = body.urlInput;
-    // var csvFile = body.csvFile;
-    // console.log(urlInput);
-    // console.log(csvFile);
 
     try {
-      console.log(data.jobName);
-      // if (jobType)
+
+      // checks type of file input and sets to data field inputType
+      var inputType;
+      if (body.url) {
+        inputType = "URL";
+      } else if (body.fileLocation) {
+        inputType = "CSV";
+      }
+
+      var status = "IN PROGRESS";
+
+      var id = 1;
+      var outputLocation = `/UserFiles/${id}/output/${body.jobName}/${body.fileLocation}`
+
       const job = await prisma.job.create({ 
         data: {
+          inputType: inputType,
+          // given from form
           jobName: body.jobName,
+          // given from CreateJobForm.js
           createTime: body.createTime,
-          status: body.status,
-          inputLocation: body.inputLocation,
-          outputLocation: body.outputLocation,
+          status: status,
+          // given from form
+          fileLocation: body.fileLocation,
+          // given from form
+          url: body.url,
+          outputLocation: outputLocation,
           author :{
             connect: {id: 1},
           }
@@ -33,6 +48,7 @@ export default async function createJob(req, res) {
     } catch (err) {
       console.log("Failed to create Job with error: ", err.message)
       console.log(JSON.stringify(serializeError(err)))
+      console.log("Created Job: ", job)
       
       res.status(400).json(JSON.stringify(serializeError(err)))
     }
