@@ -12,18 +12,22 @@ export default async function createJob(req, res) {
 
     try {
 
-      console.log("Calling api: " + mlAnalyzeAPI)
-      const mlResponse = await fetch(mlAnalyzeAPI, {
-        method: 'POST',
-        headers: {'Content-Type' : 'application/json'},
-        body: JSON.stringify({
-          'jobName': body.jobName
+      try {
+        console.log("Calling api: " + mlAnalyzeAPI)
+        const mlResponse = await fetch(mlAnalyzeAPI, {
+          method: 'POST',
+          headers: {'Content-Type' : 'application/json'},
+          body: JSON.stringify({
+            'jobName': body.jobName
+          })
         })
-      })
 
-      var mlRes = await mlResponse.json()
-      console.log(mlRes)
-
+        var mlRes = await mlResponse.json()
+        console.log(mlRes)
+      } catch (error) {
+        console.log("ERROR: ", error.message)
+      }
+      
       const job = await prisma.job.create({ 
         data: {
           jobName: body.jobName,
