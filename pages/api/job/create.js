@@ -1,3 +1,4 @@
+import { console } from 'globalthis/implementation'
 import {serializeError} from 'serialize-error'
 import PrismaFactory from '../../../util/PrismaFactory'
 
@@ -7,8 +8,14 @@ export default async function createJob(req, res) {
   if (req.method === 'POST') {
     var body = JSON.parse(req.body)  
     console.log("Trying to add Job to Prisma")
+    // var urlInput = body.urlInput;
+    // var csvFile = body.csvFile;
+    // console.log(urlInput);
+    // console.log(csvFile);
 
     try {
+      console.log(data.jobName);
+      // if (jobType)
       const job = await prisma.job.create({ 
         data: {
           jobName: body.jobName,

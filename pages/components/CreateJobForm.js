@@ -85,6 +85,7 @@ class CreateJobForm extends React.Component {
                                         <input
                                         type="radio"
                                         value="csvFile"
+                                        id="csvFile"
                                         checked={this.state.selectedOption === 'csvFile'}
                                         onChange={this.handleChange}/>
                                         CSV File
