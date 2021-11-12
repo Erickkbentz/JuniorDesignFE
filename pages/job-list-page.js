@@ -1,10 +1,12 @@
 import React, { useState} from 'react'
 import Link from 'next/link'
-import DBClient from '../util/DBClient.js'
+import { useRouter } from 'next/router'
+import PrismaFactory from '../util/PrismaFactory'
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_List_Page({jobs}) {
-
+    const router = useRouter()
+    // console.log(jobs);
     return (
         <div>
          <div className="pageBody">
@@ -37,7 +39,7 @@ export default function Job_List_Page({jobs}) {
                                         <td>{job.jobName}</td>
                                         <td>{job.status}</td>
                                         <td className="text-center">
-                                            <button className="tableButton" type="button">View</button>
+                                            <button className="tableButton" type="button" onClick={() => router.push('/job-view-page?id=' + job.id)}>View</button>
                                             <button className="tableButton" type="button">Download</button>
                                         </td>
                                     </tr>
@@ -55,7 +57,7 @@ export default function Job_List_Page({jobs}) {
 export const getServerSideProps = async ({ req }) => {
     const userId = 1 //use authentication to get dynamic userID
 
-    const prisma = DBClient.getPrismaInstance()
+    const prisma = PrismaFactory.getPrismaInstance()
 
     const jobs = await prisma.job.findMany({
         where: {

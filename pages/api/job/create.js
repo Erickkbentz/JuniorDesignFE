@@ -1,7 +1,7 @@
-import { PrismaClient } from '@prisma/client'
 import {serializeError} from 'serialize-error'
+import PrismaFactory from '../../../util/PrismaFactory'
 
-const prisma = new PrismaClient();
+const prisma = PrismaFactory.getPrismaInstance()
 
 export default async function createJob(req, res) {
   if (req.method === 'POST') {

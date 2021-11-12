@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import PrismaFactory from "../../../util/PrismaFactory";
 
-const prisma = new PrismaClient();
+const prisma = PrismaFactory.getPrismaInstance()
 
 export default async function createUser(req, res) {
   if (req.method === 'POST') {
