@@ -1,6 +1,7 @@
 import "../styles/globals.css"
 import "../styles/jobs-page.css"
 import '../styles/Home.module.css'
+// import '../styles/LineGraph.module.css'
 import '../styles/job-view.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -3,6 +3,7 @@ import React from 'react'
 
 import DBClient from '../util/DBClient.js'
 import { useRouter } from 'next/router'
+import PieChart from './components/PieChart.js';
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_View_Page({jobs}) {
@@ -13,7 +14,7 @@ export default function Job_View_Page({jobs}) {
   
   return (
     <div style={styles.container}>
-    
+      
       <main className={styles.main}>
         <h1 className={styles.title}>
          Job view of {job.jobName}
@@ -21,6 +22,7 @@ export default function Job_View_Page({jobs}) {
         <p className={styles.description}>
           Test
         </p>
+        <PieChart/>
       </main>
       
     </div>
@@ -29,7 +31,7 @@ export default function Job_View_Page({jobs}) {
 
 const styles = {
   container:{
-    minHeight: 100,
+    minHeight: 2000,
     padding: 1,
     display: "flex",
     flexDirection: "column",
