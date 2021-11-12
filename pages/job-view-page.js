@@ -1,6 +1,6 @@
 
 import React from 'react'
-import styles from '../styles/Home.module.css'
+
 import DBClient from '../util/DBClient.js'
 import { useRouter } from 'next/router'
 
@@ -12,9 +12,9 @@ export default function Job_View_Page({jobs}) {
   let job = jobs[index];
   
   return (
-    <div className={styles.container}>
+    <div style={styles.container}>
     
-    <main className={styles.main}>
+      <main className={styles.main}>
         <h1 className={styles.title}>
          Job view of {job.jobName}
         </h1>
@@ -25,6 +25,21 @@ export default function Job_View_Page({jobs}) {
       
     </div>
   )
+}
+
+const styles = {
+  container:{
+    minHeight: 100,
+    padding: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 100,
+  },
+  main:{},
+  title:{},
+  description:{}
 }
 
 
