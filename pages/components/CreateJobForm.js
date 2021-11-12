@@ -14,10 +14,6 @@ class CreateJobForm extends React.Component {
       
     async createJob(event) {
         event.preventDefault()
-    
-        var d = new Date()
-        var currentTime = d.toLocaleString
-
         try {
             let res =  await fetch('/api/job/create', {
                 method: 'POST',
