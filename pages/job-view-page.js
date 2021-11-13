@@ -4,14 +4,13 @@ import React from 'react'
 import DBClient from '../util/DBClient.js'
 import { useRouter } from 'next/router'
 import PieChart from './components/PieChart.js';
-
+import dummyDataset from './components/dummyData.js';
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_View_Page({jobs}) {
   const router = useRouter();
   const { id } = router.query;
   const index = parseInt(id) - 1;
   let job = jobs[index];
-  
   return (
     <div style={styles.container}>
       
@@ -22,7 +21,7 @@ export default function Job_View_Page({jobs}) {
         <p className={styles.description}>
           Test
         </p>
-        <PieChart/>
+        <PieChart data={dummyDataset[index]}/>
       </main>
       
     </div>
@@ -31,7 +30,7 @@ export default function Job_View_Page({jobs}) {
 
 const styles = {
   container:{
-    minHeight: 2000,
+    minHeight: 1200,
     padding: 1,
     display: "flex",
     flexDirection: "column",
