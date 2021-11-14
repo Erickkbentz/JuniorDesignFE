@@ -18,8 +18,10 @@ export default async function createJob(req, res) {
       // checks type of file input and sets to data field inputType
       let inputType;
       let fileLocation = body.fileLocation;
-      let  url = body.url;
-
+      let  url = body.url;        
+      let d = new Date()
+      let currentTime = d.toLocaleString
+      
       if (body.url) {
         inputType = "URL";
       
@@ -45,7 +47,7 @@ export default async function createJob(req, res) {
           // given from form
           jobName: body.jobName,
           // given from CreateJobForm.js
-          createTime: body.createTime,
+          createTime: currentTime,
           status: status,
           // given from form
           fileLocation: fileLocation,
@@ -63,7 +65,7 @@ export default async function createJob(req, res) {
       console.log("Initiating analysis of job in MLServer")
       analyzeJob(userId, job.id, inputType, body.jobName, fileLocation, url)
 
-      res.status(200).json(job)
+      res.status(201).json(job)
     } catch (err) {
       console.log("Failed to create Job with error: ", err.message)
       console.log(JSON.stringify(serializeError(err)))

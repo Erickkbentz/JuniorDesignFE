@@ -16,7 +16,7 @@ export default function Job_View_Page({job}) {
         <p className={styles.description}>
           Test
         </p>
-        <PieChart elpData={dummyDataset.elp[index]}/>
+        <PieChart elpData={dummyDataset.elp[index][index]}/>
       </main>
       
     </div>
@@ -53,5 +53,6 @@ export async function getServerSideProps( context ) {
           id: idInt,
       }
   })
+  
   return { props: { job } }
 }

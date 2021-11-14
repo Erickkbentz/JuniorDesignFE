@@ -23,8 +23,7 @@ class CreateJobForm extends React.Component {
     async createJob(event) {
         event.preventDefault()
     
-        var d = new Date()
-        var currentTime = d.toLocaleString
+        
 
 
         try {
@@ -32,13 +31,12 @@ class CreateJobForm extends React.Component {
                 method: 'POST',
                 body: JSON.stringify({
                     jobName: event.target.jobName.value,
-                    createTime: currentTime,
                     fileLocation: event.target.fileLocation.value,
                     url: event.target.url.value,
                 })
             })
 
-            if (res.status == 200) {
+            if (res.status == 201) {
                 alert("Submitted Successfully!")
                 event.target.jobName.value = ""
                 event.target.fileLocation.value = ""
