@@ -20,7 +20,7 @@ export default async function createJob(req, res) {
       let fileLocation = body.fileLocation;
       let  url = body.url;        
       let d = new Date()
-      let currentTime = d.toLocaleString
+      let currentTime = d.toLocaleString()
       
       if (body.url) {
         inputType = "URL";
