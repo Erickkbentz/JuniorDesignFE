@@ -5,7 +5,6 @@ import dummyDataset from '../util/dummyData.js';
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_View_Page({job}) {
-  let job = job
   return (
     <div style={styles.container}>
       
