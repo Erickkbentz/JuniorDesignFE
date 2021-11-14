@@ -8,7 +8,6 @@ let dummyDataset = {
         "They prepare to enslave the world and mine it for all its salt, but the scanners detect an abnormally high concentration inside a tiny shack in Greece.",
         "The invasion won't be necessary.", "\"Lock onto him with the RNG disruptor,\" says the captain, greedily.",
         "\"Soon we shall have all the salt we need.\""]
- 
     ]
 }
 

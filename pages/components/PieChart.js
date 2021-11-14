@@ -28,7 +28,7 @@ class PieChart extends React.PureComponent {
                     ]
                 }]
             },
-            
+             
             options: {
                 //Customize chart options
                 responsive:true,

@@ -11,6 +11,9 @@ export default function Job_View_Page({jobs}) {
   const { id } = router.query;
   const index = parseInt(id) - 1;
   let job = jobs[index];
+
+  const sentences = dummyDataset.sentences[index];
+  const listItems = sentences.map((sentence) =>  <li>{sentence}</li>);
   return (
     <div style={styles.container}>
       
@@ -22,6 +25,11 @@ export default function Job_View_Page({jobs}) {
           Test
         </p>
         <PieChart elpData={dummyDataset.elp[index]}/>
+
+        <text>
+          Sentences analyzed:
+        </text>
+        <ul>{listItems}</ul>
       </main>
       
     </div>
@@ -30,7 +38,7 @@ export default function Job_View_Page({jobs}) {
 
 const styles = {
   container:{
-    minHeight: 600,
+    minHeight: 800,
     padding: 1,
     display: "flex",
     flexDirection: "column",
