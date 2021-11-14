@@ -38,6 +38,7 @@ export default function Job_View_Page({jobs}) {
 
 const styles = {
   container:{
+    marginTop: 25,
     minHeight: 800,
     padding: 1,
     display: "flex",
@@ -46,7 +47,14 @@ const styles = {
     alignItems: "center",
     height: 100,
   },
-  main:{},
+  main: {
+    padding: 5,
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   title:{},
   description:{}
 }
