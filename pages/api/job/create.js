@@ -75,7 +75,7 @@ export default async function createJob(req, res) {
 
 const analyzeJob = async (userId, jobId, inputType, jobName, fileLocation, url) => {
   
-  await new Promise(r => setTimeout(r, 2000))
+  await new Promise(r => setTimeout(r, 1000))
   try{ 
     const res = await fetch('http://localhost:3000/api/job/analyze', {
       method: 'POST',

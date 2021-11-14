@@ -18,8 +18,9 @@ export default async function analyzeJob (req, res) {
                 const response = await axios.post(MLAPI, {
                     userId: body.userId,
                     inputType: body.inputType,
-                    jobname: body.jobname,
+                    jobName: body.jobName,
                     url: body.url,
+                    fileLocation: body.fileLocation
                 })
 
                 console.log("MLServer analyze_job API Respnse Code: " + response.status + " -- " + JSON.stringify(response.data))
@@ -33,6 +34,7 @@ export default async function analyzeJob (req, res) {
                 }
     
             } catch (err) {
+                console.log(err.message)
                 status = 'FAILED'
             }
 
