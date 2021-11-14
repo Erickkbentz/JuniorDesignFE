@@ -1,16 +1,11 @@
 import React from 'react'
-import styles from '../styles/Home.module.css'
-import { useRouter } from 'next/router'
 import PrismaFactory from '../util/PrismaFactory'
 import PieChart from './components/PieChart.js';
-import dummyDataset from './components/dummyData.js';
+import dummyDataset from '../util/dummyData.js';
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
-export default function Job_View_Page({jobs}) {
-  const router = useRouter();
-  const { id } = router.query;
-  const index = parseInt(id) - 1;
-  let job = jobs[index];
+export default function Job_View_Page({job}) {
+  let job = job
   return (
     <div style={styles.container}>
       
@@ -44,15 +39,19 @@ const styles = {
 }
 
 
-export const getServerSideProps = async ({ req }) => {
+export async function getServerSideProps( context ) {
   const userId = 1 //use authentication to get dynamic userID
 
+  const { id } = context.query
+  console.log("prams:" + JSON.stringify(context.query))
+
+  const idInt = parseInt(id)
   const prisma = PrismaFactory.getPrismaInstance()
 
-  const jobs = await prisma.job.findMany({
+  const job = await prisma.job.findUnique({
       where: {
-          author: {id: userId}
+          id: idInt,
       }
   })
-  return { props: { jobs } }
+  return { props: { job } }
 }
