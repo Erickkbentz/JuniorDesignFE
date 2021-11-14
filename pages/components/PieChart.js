@@ -12,17 +12,27 @@ class PieChart extends React.PureComponent {
     
     componentDidMount() {
         const myChartRef = this.chartRef.current.getContext("2d");
-        const data = this.props.data;
+        const elpData = this.props.elpData;
         new Chart(myChartRef, {
             type: "pie",
             data: {
                 //Bring in data
                 labels: ["Logos", "Ethos", "Pathos"],
-                datasets: [data]
+                datasets:  [{
+                    label: "Ethos/Logos/Pathos",
+                    data: elpData,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ]
+                }]
             },
             
             options: {
                 //Customize chart options
+                responsive:true,
+                maintainAspectRatio: false
             }
         });
     }

@@ -21,7 +21,7 @@ export default function Job_View_Page({jobs}) {
         <p className={styles.description}>
           Test
         </p>
-        <PieChart data={dummyDataset[index]}/>
+        <PieChart elpData={dummyDataset.elp[index]}/>
       </main>
       
     </div>
@@ -30,7 +30,7 @@ export default function Job_View_Page({jobs}) {
 
 const styles = {
   container:{
-    minHeight: 1200,
+    minHeight: 600,
     padding: 1,
     display: "flex",
     flexDirection: "column",
