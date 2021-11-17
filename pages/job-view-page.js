@@ -5,7 +5,11 @@ import dummyDataset from '../util/dummyData.js';
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_View_Page({job}) {
-  let index = 0;
+  // let index = 0;
+  // console.log(job)
+  let sentences = dummyDataset[job.jobName].sentences;
+
+  let listItems = sentences.map((sentence) =>  <li>{sentence}</li>);
   return (
     <div style={styles.container}>
       
@@ -14,9 +18,9 @@ export default function Job_View_Page({job}) {
          Job view of {job.jobName}
         </h1>
         <p className={styles.description}>
-          Test
         </p>
-        <PieChart elpData={dummyDataset.elp[index][index]}/>
+        <PieChart elpData={dummyDataset[job.jobName].elp}/>
+        <ul>{listItems}</ul>
       </main>
       
     </div>
@@ -25,7 +29,7 @@ export default function Job_View_Page({job}) {
 
 const styles = {
   container:{
-    minHeight: 600,
+    minHeight: 800,
     padding: 1,
     display: "flex",
     flexDirection: "column",
