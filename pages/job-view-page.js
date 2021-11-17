@@ -12,15 +12,24 @@ export default function Job_View_Page({job}) {
   let listItems = sentences.map((sentence) =>  <li>{sentence}</li>);
   return (
     <div style={styles.container}>
-      
       <main className={styles.main}>
         <h1 className={styles.title}>
-         Job view of {job.jobName}
+            Job view of {job.jobName}
         </h1>
-        <p className={styles.description}>
-        </p>
-        <PieChart elpData={dummyDataset[job.jobName].elp}/>
-        <ul>{listItems}</ul>
+        <div style={{display:"flex", flexDirection: "column",justifyContent: "center"}}>
+          <h3>
+            Ethos, Logos, and Pathos Percentage:
+          </h3>
+          <PieChart data={dummyDataset[job.jobName].elp} labels = {["Ethos","Logos","Pathos"]}/>
+          <h3>
+            Persuasive vs Normal Sentences:
+          </h3>
+          <PieChart data={dummyDataset[job.jobName].persuasion} labels = {["Persuasive Sentence", "Normal Sentence"]}/>
+          <p className={styles.description}>
+            Sentences Analyzed:
+          </p>
+          <ul>{listItems}</ul>
+        </div>
       </main>
       
     </div>
@@ -29,15 +38,21 @@ export default function Job_View_Page({job}) {
 
 const styles = {
   container:{
-    minHeight: 800,
+    minHeight: 1600,
     padding: 1,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    height: 100,
+    // height: 100,
   },
-  main:{},
+  main:{
+    minHeight: 800,
+    padding: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
   title:{},
   description:{}
 }
