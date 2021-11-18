@@ -2,6 +2,9 @@ import React from 'react'
 import PrismaFactory from '../util/PrismaFactory'
 import PieChart from './components/PieChart.js';
 import dummyDataset from '../util/dummyData.js';
+import Link from 'next/link'
+import ExportPdfComponent from "./components/export-pdf";
+
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_View_Page({job}) {
@@ -11,11 +14,25 @@ export default function Job_View_Page({job}) {
 
   let listItems = sentences.map((sentence) =>  <li>{sentence}</li>);
   return (
-    <div style={styles.container}>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-            Job view of {job.jobName}
-        </h1>
+    <div className="pageBody">
+            <div className="jobs-container-head-grid">
+                <span className="jobs-grid-item-left">
+                    <Link href="/job-list-page" styles={{ textDecoration: 'none' }} passHref>
+                        <button className="backButton">Back</button>
+                    </Link>
+                </span>
+                <h1 className="jobs-grid-item-center">
+                  Job View of {job.jobName}
+                </h1>
+                <span className="jobs-grid-item-right">
+                  {/* just a placeholder for now - add download button logic here */}
+                    {/* <Link href="/job-list-page" styles={{ textDecoration: 'none' }} passHref> */}
+                        <button className="backButton">Share</button>
+                    {/* </Link> */}
+                </span>
+            </div>
+
+      <main>
         <div style={{display:"flex", flexDirection: "column",justifyContent: "center"}}>
           <h3>
             Ethos, Logos, and Pathos Percentage:
@@ -75,3 +92,4 @@ export async function getServerSideProps( context ) {
   
   return { props: { job } }
 }
+
