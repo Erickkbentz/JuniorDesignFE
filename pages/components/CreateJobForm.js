@@ -35,7 +35,7 @@ class CreateJobForm extends React.Component {
                     createTime: currentTime,
                     fileLocation: event.target.fileLocation.value,
                     url: event.target.url.value,
-                }),
+                })
             })
 
             if (res.status == 200) {
@@ -132,7 +132,11 @@ class CreateJobForm extends React.Component {
                         Please input a CSV file or a URL to a Reddit page to be analyzed:
                     </div> */}
                     <h3 className="jobs-grid-item-center">
+<<<<<<< HEAD
                         Please input a file or a Reddit page's URL to be analyzed:
+=======
+                        {"Please input a CSV file or a Reddit page's URL to be analyzed:"}
+>>>>>>> cd45ad4753e01ed93de3c9aaa282dfd69e84c120
                     </h3>
 
                     <label htmlFor="inputLocation" className = {styles.card}>
