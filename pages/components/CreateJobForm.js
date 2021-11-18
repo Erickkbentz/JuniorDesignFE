@@ -1,8 +1,5 @@
 import React from "react"
 import styles from '../../styles/Home.module.css'
-import URLInput from './URLInput'
-import fileInput from './FileInput'
-import Input from "./Input"
 import { console } from "globalthis/implementation"
 
 // GLOBAL VAR
@@ -132,11 +129,7 @@ class CreateJobForm extends React.Component {
                         Please input a CSV file or a URL to a Reddit page to be analyzed:
                     </div> */}
                     <h3 className="jobs-grid-item-center">
-<<<<<<< HEAD
                         Please input a file or a Reddit page's URL to be analyzed:
-=======
-                        {"Please input a CSV file or a Reddit page's URL to be analyzed:"}
->>>>>>> cd45ad4753e01ed93de3c9aaa282dfd69e84c120
                     </h3>
 
                     <label htmlFor="inputLocation" className = {styles.card}>
