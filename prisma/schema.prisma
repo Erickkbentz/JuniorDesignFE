@@ -9,29 +9,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
 model User {
-  id              Int         @id @default(autoincrement())
-  name            String
-  jobs            Job[]
-  email           String      @unique
-
-} 
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+  jobs  Job[]
+}
 
 model Job {
-  id              Int         @id @default(autoincrement())
-  inputType       String
-  jobName         String      @unique
-  createTime      String?     
-  status          String     
-  fileLocation    String?
-  url             String?
-  outputLocation  String
-  author          User       @relation(fields: [authorId], references: [id])
-  authorId        Int
-
+  id             Int     @id @default(autoincrement())
+  inputType      String
+  jobName        String  @unique
+  createTime     String?
+  status         String
+  fileLocation   String?
+  url            String?
+  outputLocation String
+  authorId       Int
+  author         User    @relation(fields: [authorId], references: [id])
 }
-

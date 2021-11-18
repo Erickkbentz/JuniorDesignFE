@@ -31,7 +31,13 @@ export default function Home() {
         </h1>
         <p className={styles.description}>
           Get started by inputting a{' '}
-          <code className={styles.code}>file or URL</code>
+          {/* <code className={styles.code}>file or URL</code> */}
+          {/* <div> */}
+            <Link href="/job-create-page" passHref>
+              <code className={styles.code}>file or URL</code>
+            </Link>
+          {/* </div> */}
+          {/* <Link href="/job-list-page" passHref></Link> */}
           {/* . */}
         </p>
       </main>

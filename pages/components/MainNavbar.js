@@ -27,12 +27,13 @@ class MainNavbar extends React.Component {
                 <Link href="/job-list-page" passHref>
                   <Nav.Link>Jobs</Nav.Link>
                 </Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="/api/auth/logout">Logout</NavDropdown.Item>
+                <NavDropdown title="Other" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">FAQ</NavDropdown.Item>
+                  {/* <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item> */}
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                  <NavDropdown.Item href="/api/auth/logout">Logout</NavDropdown.Item>
+
+                  {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                 </NavDropdown>
               </Nav>
               <Nav>
