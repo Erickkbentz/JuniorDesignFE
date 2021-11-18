@@ -1,6 +1,5 @@
 import React from "react";
 import CreateJobFrom from '../pages/components/CreateJobForm'
-import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 export default function Job_Create_Page() {
