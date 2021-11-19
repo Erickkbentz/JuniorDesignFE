@@ -2,7 +2,7 @@ import axios from 'axios'
 import PrismaFactory from '../../../util/PrismaFactory'
 
 const prisma = PrismaFactory.getPrismaInstance()
-const MLAPI = "http://127.0.0.1:9090/analyze_job"
+const MLAPI = "http://localhost:9090/analyze_job"
 
 
 export default async function analyzeJob (req, res) {
@@ -15,13 +15,18 @@ export default async function analyzeJob (req, res) {
         try {
 
             try {
-                const response = await axios.post(MLAPI, {
-                    userId: body.userId,
-                    inputType: body.inputType,
-                    jobName: body.jobName,
-                    url: body.url,
-                    fileLocation: body.fileLocation
-                })
+                let reqData = {
+                    'userId': body.userId,
+                    'inputType': body.inputType,
+                    'jobName': body.jobName,
+                    'url': body.url,
+                    'fileLocation': body.fileLocation
+                }
+                let headers = {
+                    'Content-Type': 'application/json'
+                }
+
+                const response = await axios.post(MLAPI, reqData, headers)
 
                 console.log("MLServer analyze_job API Respnse Code: " + response.status + " -- " + JSON.stringify(response.data))
 
@@ -29,12 +34,14 @@ export default async function analyzeJob (req, res) {
                 console.log(response.data.status)
                 outputLocation= response.data.outputLocation
 
+
                 if (response.status != 200) {
+                    console.log(JSON.stringify(response.data))
                     status = 'FAILED'
                 }
     
             } catch (err) {
-                console.log(err.message)
+                console.log(err)
                 status = 'FAILED'
             }
 
@@ -61,7 +68,7 @@ export default async function analyzeJob (req, res) {
                     },
                     data: {
                         status: "FAILED",
-                        outputLocation: outputLocation
+                        outputLocation: ''
                     }
                 })
             } catch (error) {
