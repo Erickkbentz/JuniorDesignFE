@@ -127,7 +127,7 @@ class CreateJobForm extends React.Component {
                         Please input a CSV file or a URL to a Reddit page to be analyzed:
                     </div> */}
                     <h3 className="jobs-grid-item-center">
-                        Please input a file or a Reddit page's URL to be analyzed:
+                        {"Please input a file or a Reddit page's URL to be analyzed:"}
                     </h3>
 
                     <label htmlFor="inputLocation" className = {styles.card}>
