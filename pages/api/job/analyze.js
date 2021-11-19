@@ -15,6 +15,7 @@ export default async function analyzeJob (req, res) {
         try {
 
             try {
+                // send jobID
                 let reqData = {
                     'userId': body.userId,
                     'inputType': body.inputType,
