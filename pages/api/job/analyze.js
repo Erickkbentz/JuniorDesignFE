@@ -11,13 +11,12 @@ export default async function analyzeJob (req, res) {
          const body = JSON.parse(req.body)
          let status = ''
          let outputLocation = ''
-         let jobId = body.jobId
         try {
 
             try {
-                // send jobID
                 let reqData = {
                     'userId': body.userId,
+                    'jobId' : body.jobId,
                     'inputType': body.inputType,
                     'jobName': body.jobName,
                     'url': body.url,
