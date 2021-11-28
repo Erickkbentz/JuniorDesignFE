@@ -11,6 +11,8 @@ export default async function analyzeJob (req, res) {
          const body = JSON.parse(req.body)
          let status = ''
          let outputLocation = ''
+         let jobId = body.jobId
+         
         try {
 
             try {
@@ -32,17 +34,19 @@ export default async function analyzeJob (req, res) {
 
                 status = response.data.status
                 console.log(response.data.status)
-                outputLocation= response.data.outputLocation
+                outputLocation = response.data.outputLocation
 
 
                 if (response.status != 200) {
                     console.log(JSON.stringify(response.data))
                     status = 'FAILED'
+                    outputLocation = ''
                 }
     
             } catch (err) {
                 console.log(err)
                 status = 'FAILED'
+                outputLocation = ''
             }
 
             
