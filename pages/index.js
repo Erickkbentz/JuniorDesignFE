@@ -5,6 +5,13 @@ import Link from 'next/link'
 
 import { useUser } from '@auth0/nextjs-auth0';
 
+/**
+ * This file contains the React component representing our home page
+ * of the dashboard.
+ * 
+ * @returns the home page component of the dashboard
+ */
+
 export default function Home() {
   const user = useUser();
   

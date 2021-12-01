@@ -5,6 +5,14 @@ import dummyDataset from '../util/dummyData.js';
 import Link from 'next/link'
 import html2canvas from 'html2canvas'
 
+
+
+/**
+ * 
+ * @param {Job} job the job which the user has selected
+ * @returns the react component of the Job_view Page
+ */
+
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_View_Page({job}) {
   // let index = 0;
@@ -88,6 +96,12 @@ function downloadImage(data, filename = 'untitled.jpeg') {
   a.click();
 }
 
+/**
+ * Finds the job which the user has selected.
+ * 
+ * @param {*} context 
+ * @returns a json object of the Job
+ */
 export async function getServerSideProps( context ) {
   const userId = 1 //use authentication to get dynamic userID
 
