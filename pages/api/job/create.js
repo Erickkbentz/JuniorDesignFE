@@ -4,8 +4,6 @@ import {serializeError} from 'serialize-error'
 import PrismaFactory from '../../../util/PrismaFactory'
 
 const prisma = PrismaFactory.getPrismaInstance()
-const MLAPI = "http://127.0.0.1:9090/analyze_job"
-
 
 export default async function createJob(req, res) {
 
@@ -61,7 +59,7 @@ export default async function createJob(req, res) {
       })
       console.log("Created Job: ", job)
 
-      // without await so function runs in background incase ML stuff takes too long
+      // Call async analyzeJob function without 'await'
       console.log("Initiating analysis of job in MLServer")
       analyzeJob(userId, job.id, inputType, body.jobName, fileLocation, url)
 
@@ -77,7 +75,6 @@ export default async function createJob(req, res) {
 
 const analyzeJob = async (userId, jobId, inputType, jobName, fileLocation, url) => {
   
-  await new Promise(r => setTimeout(r, 1000))
   try{ 
     const res = await fetch('http://localhost:3000/api/job/analyze', {
       method: 'POST',

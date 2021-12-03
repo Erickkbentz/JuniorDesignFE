@@ -33,11 +33,13 @@ export default function Job_List_Page({jobs}) {
                                 </tr>
                             </thead>
                             <tbody>
+                                {/* Iterate over all jobs and display data */}
                                 {jobs && jobs.map(job =>
                                     <tr key={job.id}>
                                         <td>{job.jobName}</td>
                                         <td>{job.status}</td>
                                         <td className="text-center">
+                                            {/* Make buttons conditional - only if status COMPLETED */}
                                             <button className="tableButton" type="button" onClick={() => {
                                                 job.status != "COMPLETED" ? 
                                                 alert("Sorry, your job is in status FAILED or IN_PROGRESS jobs.") : 
