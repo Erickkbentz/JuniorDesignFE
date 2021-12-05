@@ -41,16 +41,16 @@ export default function Job_View_Page({job}) {
             </span>
           </div>
 
-        <main>
+        <main style={styles.main}>
           <div id='capture' style={{display:"flex", flexDirection: "column",justifyContent: "center"}}>
-            <h3>
+            <h3 style={{textAlign:"center"}}>
               Ethos, Logos, and Pathos Percentage:
             </h3>
-            <PieChart data={dummyDataset[job.jobName].elp} labels = {["Ethos","Logos","Pathos"]}/>
-            <h3>
+            <PieChart data={dataSet.elp} labels = {["Ethos","Logos","Pathos"]}/>
+            <h3 style={{textAlign:"center"}}>
               Persuasive vs Normal Sentences:
             </h3>
-            <PieChart data={dummyDataset[job.jobName].persuasion} labels = {["Persuasive Sentence", "Normal Sentence"]}/>
+            <PieChart data={dataSet.persuasion} labels = {["Persuasive Sentence", "Normal Sentence"]}/>
             <p className={styles.description}>
               Sentences Analyzed:
             </p>
