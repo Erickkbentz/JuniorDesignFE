@@ -1,30 +1,25 @@
-import React from "react"
+import React, { useState } from "react"
 import styles from '../../styles/Home.module.css'
-import { console } from "globalthis/implementation"
+import { console, document, FormData } from "globalthis/implementation"
+import UiFileInputButton from "./UiFileInputButton";
 
-// GLOBAL VAR
-var darkMode = false;
 
 class CreateJobForm extends React.Component {
     constructor(props) {
         super(props)
-
-        // this.state = {
-        //     selectedOption: ''
-        // }
-        // this.handleChange = this.handleChange.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-
+    
+    // calls createJob function from api/job/create.js
     async createJob(event) {
         event.preventDefault()
-    
         
-
-
         try {
-            let res =  await fetch('/api/job/create', {
+
+            
+            // console.log(event.target.fileLocation.value);
+            // creates a response code
+                // attempts to POST to database through the API with data in body            
+            let res =  await fetch('/api/job/create2', {
                 method: 'POST',
                 body: JSON.stringify({
                     jobName: event.target.jobName.value,
@@ -32,6 +27,8 @@ class CreateJobForm extends React.Component {
                     url: event.target.url.value,
                 })
             })
+
+            // console.log(event.target);
 
             if (res.status == 201) {
                 alert("Submitted Successfully!")
@@ -48,74 +45,51 @@ class CreateJobForm extends React.Component {
         }
     }
 
-    handleChange(event) {
-        this.setState({
-            selectedOption: event.target.value
-            // change variable here
-        });
-        // console.log(this.state.selectedOption);
+    async onChange(formData) {
+        console.log(formData);
+    // const onChange = async (formData) => {
+        const config = {
+          headers: { 'content-type': 'multipart/form-data' },
+          onUploadProgress: (event) => {
+            console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
+          },
+        };
+        // const response = await axios.post('/api/uploads', formData, config);
+            // what is '/api/uploads' meant to be?
+        const response = await axios.post('../api/job/create2', formData, config);
 
-    }
+        console.log('response', response.data);
+    };
 
-    handleSubmit(event) {
-        event.preventDefault();
-        // switch dark mode
-        // if (darkMode) {
-        //     darkMode = false;
-        // } else {
-        //     darkMode = true;
-        // }
-        // console.log(darkMode);
-        alert(`you chose the ${this.state.selectedOption} .`);
-        console.log(this.state.selectedOption);
-    }
-
+    // renders the react component for this page
     render() {
+
+        // async onChange(formData) {
+        //     console.log(formData);
+        // // const onChange = async (formData) => {
+        //     const config = {
+        //       headers: { 'content-type': 'multipart/form-data' },
+        //       onUploadProgress: (event) => {
+        //         console.log(`Current progress:`, Math.round((event.loaded * 100) / event.total));
+        //       },
+        //     };
+        //     // const response = await axios.post('/api/uploads', formData, config);
+        //         // what is '/api/uploads' meant to be?
+        //     const response = await axios.post('../api/job/create2', formData, config);
+    
+        //     console.log('response', response.data);
+        // };
+
         return ( 
+
             <form onSubmit={this.createJob}>
                 <div>
-                    {/* <form onSubmit={this.handleSubmit}>
-                        <div className="radio">
-                            <label htmlFor="jobType" className = {styles.card}>
-                                Job Type
-                                <div>
-                                    <label>
-                                        <input
-                                        type="radio"
-                                        value="csvFile"
-                                        id="csvFile"
-                                        checked={this.state.selectedOption === 'csvFile'}
-                                        onChange={this.handleChange}/>
-                                        CSV File
-                                    </label>
-                                </div>
-                                <div> 
-                                    <label>
-                                        <input
-                                        type = "radio"
-                                        id="urlInput"
-                                        value="urlInput"
-                                        checked={this.state.selectedOption === 'urlInput'}
-                                        onChange={this.handleChange}/>
-                                        Reddit URL
-                                    </label>
-                                </div>
-                                
-                            </label>
-
-                        </div>
-                    </form> */}
-                    
-                    
+                    {/* retrieves name of job from user */}
                     <label htmlFor="jobName" className = {styles.card}>
-                        Job Name
-                            <input id="jobName" name="jobName" type="text"/>
+                    Job Name
+                    <input id="jobName" name="jobName" type="text"/>
                     </label>
-{/* 
-                    <label htmlFor="status" className = {styles.card}>
-                        Status
-                        <input id="status" name="status" type="text"/>
-                    </label> */}
+
                     {/* add a line to seperate logic for file input type */}
                     <hr  style={{
                         color: '#000000',
@@ -123,30 +97,36 @@ class CreateJobForm extends React.Component {
                         height: .5,
                         borderColor : '#000000'
                     }}/>
-                    {/* <div>
-                        Please input a CSV file or a URL to a Reddit page to be analyzed:
-                    </div> */}
                     <h3 className="jobs-grid-item-center">
                         {"Please input a file or a Reddit page's URL to be analyzed:"}
                     </h3>
-
-                    <label htmlFor="inputLocation" className = {styles.card}>
+                    {/* retrieves name of file from user */}
+                    <label htmlFor="fileLocation" className = {styles.card}>
                         File:
-                        {/* saves in db with C:\fakepath\fileName.csv */}
-                        <input id = "fileLocation" type="file" ref={this.fileInput} className = {styles.fileInput}/>
+                        {/* <input
+                            id = "fileLocation"
+                            type="file"
+                            ref={this.fileInput}
+                            // onChange={this.onChange}
+                            // className = {styles.fileInput}
+                            // value={selectedFile}
+                            // onChange={(e) => setSelectedFile(e.target.files[0])}
+                        /> */}
+                        <UiFileInputButton
+                            label="Upload Single File"
+                            uploadFileName="theFile"
+                            onChange={this.onChange}
+                            id = "fileLocation"
+                        />
+                       
                     </label>
 
                         OR
-
-                    <label htmlFor="inputLocation" className = {styles.card}>
+                    {/* retrieves URL from user */}
+                    <label htmlFor="url" className = {styles.card}>
                         URL:
                         <input id = "url" type="url" ref={this.URLInput} />
                     </label>
-
-                    {/* <label htmlFor="outputLocation" className = {styles.card}>
-                        Output Location
-                        <input id="outputLocation" name="outputLocation" type="text"/>
-                    </label> */}
                  </div>
                 <div>
                     <button type="submit" >Submit</button>
