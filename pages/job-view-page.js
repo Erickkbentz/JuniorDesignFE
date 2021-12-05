@@ -9,10 +9,12 @@ import html2canvas from 'html2canvas'
 export default function Job_View_Page({job}) {
   // let index = 0;
   // console.log(job)
-  let sentences = dummyDataset[job.jobName].sentences;
+  const dataSet = require("../../UserFiles/1/outputFiles/"+ job.jobName + "-output.json");
+  
+  let sentences = dataSet.sentences;
 
   let listItems = sentences.map((sentence, index) =>  <li key={index}>{sentence}</li>);
-
+  console.log(dataSet);
   return (
     <div className="pageBody">
           <div className="jobs-container-head-grid">
