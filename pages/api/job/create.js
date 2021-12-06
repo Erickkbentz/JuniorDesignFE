@@ -79,7 +79,7 @@ export default async function createJob(req, res) {
 const analyzeJob = async (userId, jobId, inputType, jobName, fileLocation, url) => {
   
   try{ 
-    const res = await fetch('http://localhost:3000/api/job/analyze', {
+    const res = fetch('http://localhost:3000/api/job/analyze', {
       method: 'POST',
       body: JSON.stringify({
         userId: userId,
@@ -90,11 +90,7 @@ const analyzeJob = async (userId, jobId, inputType, jobName, fileLocation, url) 
         url: url
       })
     })
-
-    if(res.status != 200) {
-      throw new Error("analyze_job returned non 200 status code. MLServer is down or API failed")
-    }
-
+    
   } catch (err) {
       console.log("Failed to initialize ML analysis: \n" + err)
       

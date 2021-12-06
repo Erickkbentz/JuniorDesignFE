@@ -1,7 +1,6 @@
 import React from 'react'
 import PrismaFactory from '../util/PrismaFactory'
 import PieChart from './components/PieChart.js';
-import dummyDataset from '../util/dummyData.js';
 import Link from 'next/link'
 import html2canvas from 'html2canvas'
 
@@ -9,8 +8,8 @@ import html2canvas from 'html2canvas'
 export default function Job_View_Page({job}) {
   // let index = 0;
   // console.log(job)
-  const dataSet = require("../../UserFiles/1/outputFiles/"+ job.jobName + "-output.json");
-  
+  const dataSet = require("../../UserFiles/1/outputFiles/" + job.jobName + "-output.json")
+
   let sentences = [];
   // console.log(sentences);
   // let listItems = sentences.map((sentence, index) =>  <li key={index}>{sentence}</li>);
@@ -83,7 +82,7 @@ export default function Job_View_Page({job}) {
           </div>
         </main>
         <p className={styles.description}>
-              Sentences Analyzed:
+              Sentences with 100% ethos, logos, or pathos:
             </p>
         <ul style={{margin:20}}>{listItems}</ul> 
     </div>

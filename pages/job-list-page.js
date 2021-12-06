@@ -2,10 +2,34 @@ import React, { useState} from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import PrismaFactory from '../util/PrismaFactory'
+import { saveAs } from 'file-saver'
 
 /** @param {import('next').InferGetServerSidePropsType<typeof getServerSideProps> } props */
 export default function Job_List_Page({jobs}) {
     const router = useRouter()
+
+    const downloadFile = async (jobId) => {
+        const res = await fetch("/api/job/download", {
+            method: 'POST',
+            body: JSON.stringify({
+                jobId: jobId
+            })
+        })
+        console.log("downloading file")
+        return res
+    }
+
+    const saveFile = (jobName) => {
+        let jsonFile = require('../../UserFiles/1/outputFiles/' + jobName + '-output.json')
+        let cleanJson = JSON.stringify(jsonFile)
+
+        let blob = new Blob([cleanJson], {type: "application/json"});
+
+        saveAs(
+            blob,
+            jobName + "-output.json"
+        )
+    }
     return (
         <div>
          <div className="pageBody">
@@ -49,8 +73,8 @@ export default function Job_List_Page({jobs}) {
                                             </button>
                                             <button className="tableButton" type="button" onClick={() => {
                                                 job.status != "COMPLETED" ? 
-                                                alert("Sorry, your job is in status FAILED or IN_PROGRESS jobs.") : 
-                                                alert("Download button not implemented.")
+                                                alert("Sorry, your job is in status FAILED or IN_PROGRESS jobs.") :
+                                                saveFile(job.jobName)
                                             }}>
                                                 Download
                                             </button>
@@ -78,4 +102,4 @@ export async function getServerSideProps( context ) {
         }
     })
     return { props: { jobs } }
-  }
+}
