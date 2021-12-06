@@ -11,10 +11,26 @@ export default function Job_View_Page({job}) {
   // console.log(job)
   const dataSet = require("../../UserFiles/1/outputFiles/"+ job.jobName + "-output.json");
   
-  let sentences = dataSet.sentences;
-
-  let listItems = sentences.map((sentence, index) =>  <li key={index}>{sentence}</li>);
-  console.log(dataSet);
+  let sentences = dataSet[0].body;
+  console.log(sentences);
+  // let listItems = sentences.map((sentence, index) =>  <li key={index}>{sentence}</li>);
+  console.log(dataSet[0].body);
+  let elp = [0,0,0];
+  let persuasion = [0,0];
+  
+  for(let i = 0; i < dataSet.length; i++) {
+    elp[0] += dataSet[i]["Ethos_Class"];
+    elp[1] += dataSet[i]["Logos_Class"];
+    elp[2] += dataSet[i]["Pathos_Class"];
+    persuasion[0] += dataSet[i]["numPersuasive"];
+    persuasion[1] += (dataSet[i]["numTotal"] - dataSet[i]["numPersuasive"]);
+  }
+  for(let i = 0; i < elp.length; i++) {
+    elp[i] = elp[i]/100;
+    if (i < 3) {
+      persuasion[i] = persuasion[i] / 100;
+    }
+  }
   return (
     <div className="pageBody">
           <div className="jobs-container-head-grid">
@@ -48,15 +64,15 @@ export default function Job_View_Page({job}) {
             <h3 style={{textAlign:"center"}}>
               Ethos, Logos, and Pathos Percentage:
             </h3>
-            <PieChart data={dataSet.elp} labels = {["Ethos","Logos","Pathos"]}/>
+            <PieChart data={elp} labels = {["Ethos","Logos","Pathos"]}/>
             <h3 style={{textAlign:"center"}}>
               Persuasive vs Normal Sentences:
             </h3>
-            <PieChart data={dataSet.persuasion} labels = {["Persuasive Sentence", "Normal Sentence"]}/>
+            <PieChart data={persuasion} labels = {["Persuasive Sentence", "Normal Sentence"]}/>
             <p className={styles.description}>
               Sentences Analyzed:
             </p>
-            <ul>{listItems}</ul>
+            {/* <ul>{listItems}</ul> */}
           </div>
         </main>
     </div>
@@ -77,6 +93,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    alignItems:"center"
   },
   title:{},
   description:{}
