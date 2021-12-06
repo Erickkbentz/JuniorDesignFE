@@ -11,10 +11,10 @@ export default function Job_View_Page({job}) {
   // console.log(job)
   const dataSet = require("../../UserFiles/1/outputFiles/"+ job.jobName + "-output.json");
   
-  let sentences = dataSet[0].body;
-  console.log(sentences);
+  let sentences = [];
+  // console.log(sentences);
   // let listItems = sentences.map((sentence, index) =>  <li key={index}>{sentence}</li>);
-  console.log(dataSet[0].body);
+  // console.log(dataSet[0].body);
   let elp = [0,0,0];
   let persuasion = [0,0];
   
@@ -24,7 +24,17 @@ export default function Job_View_Page({job}) {
     elp[2] += dataSet[i]["Pathos_Class"];
     persuasion[0] += dataSet[i]["numPersuasive"];
     persuasion[1] += (dataSet[i]["numTotal"] - dataSet[i]["numPersuasive"]);
+    if (dataSet[i]["Ethos_Class"] >= 95) {
+      sentences.push("Ethos: " + dataSet[i].body);
+    }
+    if (dataSet[i]["Logos_Class"] >= 95) {
+      sentences.push("Logos: " + dataSet[i].body);
+    }
+    if (dataSet[i]["Pathos_Class"] >= 95) {
+      sentences.push("Pathos: " + dataSet[i].body);
+    }
   }
+  let listItems = sentences.map((sentence, index) =>  <li key={index}>{sentence}</li>);
   for(let i = 0; i < elp.length; i++) {
     elp[i] = elp[i]/100;
     if (i < 3) {
@@ -72,7 +82,7 @@ export default function Job_View_Page({job}) {
             <p className={styles.description}>
               Sentences Analyzed:
             </p>
-            {/* <ul>{listItems}</ul> */}
+            <ul>{listItems}</ul>
           </div>
         </main>
     </div>
