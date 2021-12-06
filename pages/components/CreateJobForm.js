@@ -3,7 +3,7 @@ import styles from '../../styles/Home.module.css'
 import { console } from "globalthis/implementation"
 
 // GLOBAL VAR
-var darkMode = false;
+// var darkMode = false;
 
 class CreateJobForm extends React.Component {
     constructor(props) {
@@ -48,27 +48,27 @@ class CreateJobForm extends React.Component {
         }
     }
 
-    handleChange(event) {
-        this.setState({
-            selectedOption: event.target.value
-            // change variable here
-        });
-        // console.log(this.state.selectedOption);
+    // handleChange(event) {
+    //     this.setState({
+    //         selectedOption: event.target.value
+    //         // change variable here
+    //     });
+    //     // console.log(this.state.selectedOption);
 
-    }
+    // }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        // switch dark mode
-        // if (darkMode) {
-        //     darkMode = false;
-        // } else {
-        //     darkMode = true;
-        // }
-        // console.log(darkMode);
-        alert(`you chose the ${this.state.selectedOption} .`);
-        console.log(this.state.selectedOption);
-    }
+    // handleSubmit(event) {
+    //     event.preventDefault();
+    //     // switch dark mode
+    //     // if (darkMode) {
+    //     //     darkMode = false;
+    //     // } else {
+    //     //     darkMode = true;
+    //     // }
+    //     // console.log(darkMode);
+    //     alert(`you chose the ${this.state.selectedOption} .`);
+    //     console.log(this.state.selectedOption);
+    // }
 
     render() {
         return ( 
@@ -130,7 +130,7 @@ class CreateJobForm extends React.Component {
                         {"Please input a file or a Reddit page's URL to be analyzed:"}
                     </h3>
 
-                    <label htmlFor="inputLocation" className = {styles.card}>
+                    <label htmlFor="fileLocation" className = {styles.card}>
                         File:
                         {/* saves in db with C:\fakepath\fileName.csv */}
                         <input id = "fileLocation" type="file" ref={this.fileInput} className = {styles.fileInput}/>
@@ -138,7 +138,7 @@ class CreateJobForm extends React.Component {
 
                         OR
 
-                    <label htmlFor="inputLocation" className = {styles.card}>
+                    <label htmlFor="url" className = {styles.card}>
                         URL:
                         <input id = "url" type="url" ref={this.URLInput} />
                     </label>

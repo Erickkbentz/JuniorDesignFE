@@ -20,12 +20,15 @@ export default async function createJob(req, res) {
       let d = new Date()
       let currentTime = d.toLocaleString()
       
-      if (body.url) {
-        inputType = "URL";
-      
+      if (body.url  && body.fileLocation) {
+        // throw an error
+        alert("Unexpected Error in CreateJobForm: Please only input a file or a URL.")
+
       } else if (body.fileLocation) {
         inputType = "CSV";
 
+      } else if (body.url) {
+        inputType = "URL";
       }
 
       let status = "IN PROGRESS";
