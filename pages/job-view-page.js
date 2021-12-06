@@ -79,12 +79,13 @@ export default function Job_View_Page({job}) {
               Persuasive vs Normal Sentences:
             </h3>
             <PieChart data={persuasion} labels = {["Persuasive Sentence", "Normal Sentence"]}/>
-            <p className={styles.description}>
-              Sentences Analyzed:
-            </p>
-            <ul>{listItems}</ul>
+            
           </div>
         </main>
+        <p className={styles.description}>
+              Sentences Analyzed:
+            </p>
+        <ul style={{margin:20}}>{listItems}</ul> 
     </div>
   )}
 const styles = {
@@ -95,7 +96,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    // height: 100,
+    
   },
   main:{
     minHeight: 800,
@@ -106,7 +107,9 @@ const styles = {
     alignItems:"center"
   },
   title:{},
-  description:{}
+  description:{
+    textAlign:"left"
+  }
 }
 
 function downloadImage(data, filename = 'untitled.jpeg') {
